@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<mx:Application xmlns:mx="http://www.adobe.com/2006/mxml" backgroundColor="#FFFFFF">
+	<mx:Script>
+		import  mx.collections.ArrayCollection;
+		
+		[Bindable]
+		private  var  productSales:ArrayCollection = new ArrayCollection( [
+			{ Quarter: "1", PC: 10, Mac: 3, Software: 1},
+			{ Quarter: "2", PC: 12, Mac: 4, Software: 2},
+			{ Quarter: "3", PC: 15, Mac: 8, Software: 5},
+			{ Quarter: "4", PC: 20, Mac: 10, Software: 9}
+		]);
+	</mx:Script>
+	
+	<mx:Panel  title="AreaChart Example"  width="100%"  height="100%">
+		<mx:AreaChart  id="areaChart"  height="100%"  width="100%"
+					   paddingLeft="5"  paddingRight="5"  
+					   showDataTips="true" dataProvider="{productSales}">                            
+			<mx:horizontalAxis>
+				<mx:CategoryAxis  categoryField="Quarter"/>
+			</mx:horizontalAxis>
+			<mx:series>
+				<mx:AreaSeries  yField="PC"  form="curve"  displayName="PC"/>
+				<mx:AreaSeries  yField="Mac"  form="curve"  displayName="Mac"/>
+				<mx:AreaSeries  yField="Software"  form="curve"  displayName="Software"/>
+			</mx:series>
+		</mx:AreaChart>       
+		
+		<mx:Legend  dataProvider="{areaChart}" direction="horizontal"/>
+	</mx:Panel>
+</mx:Application>
